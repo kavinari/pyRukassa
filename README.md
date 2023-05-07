@@ -15,9 +15,8 @@ from rukassa_api import RukassaAPI, PaymentData
 api = RukassaAPI(token='your_token', shop_id=123)
 
 # Create payment
-payment_data = PaymentData(shop_id=123, order_id=456, amount=100, token='your_token', method='card', data={})
-payment_response = api.create_payment(payment_data)
-print(payment_response)
+create_payment = api.create_payment(order_id=456, amount=100, method='card', data={})
+print(create_payment)
 
 # Get payment info
 payment_info = api.get_payment_info(payment_id=789)
@@ -126,10 +125,8 @@ Payment data object.
 
 #### Parameters:
 
-- `shop_id` (int): Shop ID.
 - `order_id` (int): Order ID.
 - `amount` (float): Payment amount.
-- `token` (str): API token.
 - `method` (str): Payment method. Optional.
 - `data` (Dict): Payment data. Optional.
 
