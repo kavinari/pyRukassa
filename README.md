@@ -100,8 +100,7 @@ Get balance.
 
 - Union[BalanceInfo, APIError]: Balance info or API error.
 
-#### `create_withdraw(self, email: str, password: str, way: str, wallet: str, amount: float, from_: str = None, who_fee:
-int = None) -> Union[WithdrawResult, APIError]`
+#### `create_withdraw(self, email: str, password: str, way: str, wallet: str, amount: float, from_: str = None, who_fee: int = None) -> Union[WithdrawResult, APIError]`
 
 Create withdraw.
 
@@ -180,3 +179,4 @@ API error object.
 
 - `error_code` (int): Error code.
 - `message` (str): Error message.
+
