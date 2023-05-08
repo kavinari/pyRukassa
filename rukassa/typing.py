@@ -2,6 +2,11 @@ from typing import Dict, Any
 from dataclasses import dataclass
 
 @dataclass
+class PaymentCreated:
+    id: int
+    url: str
+
+@dataclass
 class PaymentData:
     shop_id: int
     order_id: int
