@@ -2,15 +2,13 @@ import hashlib
 from flask import Flask, request
 
 app = Flask(__name__)
+token = 'ВАШ ТОКЕН'
 
 @app.route('/callback', methods=['POST'])
 def callback():
-    token = 'ВАШ ТОКЕН'
 
     sign = request.headers.get('Signature')
-    sign2 =
-hashlib.sha256(f"{request.form['id']}|{request.form['createdDateTime']}|{request.form['amount']}".encode('utf-8') +
-token.encode('utf-8')).hexdigest()
+    sign2 = hashlib.sha256(f"{request.form['id']}|{request.form['createdDateTime']}|{request.form['amount']}".encode('utf-8') + token.encode('utf-8')).hexdigest()
     if sign != sign2:
         return 'ERROR SIGN', 400
 
