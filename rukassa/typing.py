@@ -1,6 +1,7 @@
 from typing import Dict, Any
+from dataclasses import dataclass
 
-
+@dataclass
 class PaymentData:
     shop_id: int
     order_id: int
@@ -9,6 +10,7 @@ class PaymentData:
     method: str
     data: Dict
 
+@dataclass
 class PaymentInfo:
     id: int
     order_id: int
@@ -16,6 +18,7 @@ class PaymentInfo:
     status: str
     data: Dict
 
+@dataclass
 class WithdrawInfo:
     id: int
     amount: float
@@ -24,13 +27,16 @@ class WithdrawInfo:
     who_fee: str
     status: str
 
+@dataclass
 class BalanceInfo:
     balance: float
 
+@dataclass
 class WithdrawResult:
     id: int
     status: str
 
+@dataclass
 class APIError(Exception):
     def __init__(self, error_code: int, message: str):
         self.error_code = error_code
@@ -53,6 +59,7 @@ class APIError(Exception):
     def __subclasshook__(self, subclass):
         return issubclass(subclass, APIError)
 
+@dataclass
 class ValueNotReceived(APIError):
     def __init__(self, message: str):
         super().__init__(100, message)
@@ -66,6 +73,7 @@ class ValueNotReceived(APIError):
     def __subclasshook__(self, subclass):
         return issubclass(subclass, ValueNotReceived)
 
+@dataclass
 class StoreOrPaymentNotFound(APIError):
     def __init__(self, message: str):
         super().__init__(200, message)
@@ -79,6 +87,7 @@ class StoreOrPaymentNotFound(APIError):
     def __subclasshook__(self, subclass):
         return issubclass(subclass, StoreOrPaymentNotFound)
 
+@dataclass
 class MerchantNotVerified(APIError):
     def __init__(self, message: str):
         super().__init__(300, message)
@@ -92,6 +101,7 @@ class MerchantNotVerified(APIError):
     def __subclasshook__(self, subclass):
         return issubclass(subclass, MerchantNotVerified)
 
+@dataclass
 class OtherError(APIError):
     def __init__(self, message: str):
         super().__init__(400, message)
