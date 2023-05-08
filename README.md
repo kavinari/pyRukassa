@@ -4,16 +4,20 @@ This is a Python wrapper for the Rukassa API.
 ## Installation
 
 ```bash
-pip install rukassa
+pip install git+https://github.com/kavinari/pyRukassa
 ```
 
 ## Usage
 
 ```python
-from rukassa_api import RukassaAPI, PaymentData
+from rukassa import RukassaAPI, ValueNotReceived
 
 api = RukassaAPI(token='your_token', shop_id=123)
-
+# Exception
+try:
+  payment_info = api.get_payment_info()
+except ValueNotReceived as error:
+  print(error.message)
 # Create payment
 create_payment = api.create_payment(order_id=456, amount=100, method='card', data={})
 print(create_payment)
@@ -29,7 +33,7 @@ print(withdraw_info)
 # Get balance
 balance = api.get_balance(email='your_email', password='your_password')
 print(balance)
-
+  
 # Create withdraw
 withdraw_result = api.create_withdraw(email='your_email', password='your_password', way='way', wallet='wallet',
 amount=100, from_='from', who_fee=1)
