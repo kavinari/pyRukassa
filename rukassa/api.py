@@ -1,6 +1,6 @@
 import requests
 from typing import Dict, Any, Union
-from .typing import PaymentData, APIError, PaymentInfo, WithdrawInfo, BalanceInfo, WithdrawResult
+from .typing import PaymentCreated, PaymentData, APIError, PaymentInfo, WithdrawInfo, BalanceInfo, WithdrawResult
 
 
 class RukassaAPI:
@@ -22,7 +22,7 @@ class RukassaAPI:
         }
         response = requests.post(url, json=payload)
         if response.ok:
-            return response.json()
+            return PaymentCreated(**response.json())
         else:
             return APIError(response.status_code, response.text)
 
