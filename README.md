@@ -4,7 +4,7 @@ This is a Python wrapper for the Rukassa API.
 ## Installation
 
 ```bash
-pip install rukassa-api
+pip install rukassa
 ```
 
 ## Usage
