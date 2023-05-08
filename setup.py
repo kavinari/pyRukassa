@@ -14,5 +14,5 @@ setup(name='pyRukassa',
       long_description_content_type='text/markdown',
       author='kavinari',
       install_requires=['requests'],
-      author_email='kavinari@gmail.com',
+      author_email='kavinariy@gmail.com',
       zip_safe=False)
